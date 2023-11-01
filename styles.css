@@ -1,0 +1,107 @@
+/* 
+    Name: Michael Ng
+    Email: m.ng087@mybvc.ca
+    Date: 2023-10-25
+    Description: Graded Learning Activity 2
+    Four elements in the page. The first one is a bar at the top of the page. The rest are three square boxes.
+    I assume the space available for the three boxes are a square. And I didn't change anything in the HTML file. All my work is in the css.
+*/
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    
+    width: auto;
+    height: 100vh;
+    /*Use grid to control the boxes. 4 rows and 3 columns */
+    display:grid;
+    /* No gap in between the grid */
+    column-gap: 0;
+    row-gap: 0;
+    /*  1st row is 90px height, which is fixed.
+        
+        To calculate the height of the square boxes, we need to define the space we can use for them. 
+        Since first row is fixed and there are border around the boxes, the height available for the 
+        boxes is 100% of the view point height - 90px (height of the 1st row) - 70px (border of the boxes). 
+
+        Hence, the total height of the boxes is 100vh - 160px.
+        
+        This is the requirement from the worksheet.
+        The width of Box2’s boundary should be double that of Box1’s boundary. Once more, 
+        the boundary width of Box3 should be four times wider than the boundary width of Box1.
+
+        So, I devided the available space by 7. And the height of the boxes are:
+
+        2nd row is ((100vh - 160px) / 7) + 10px) 10px is the border (top and bottom) of the box.
+        3rd row is 2*((100vh - 160px)/ 7) + 20px) 20px is the border (top and bottom) of the box.
+        4th row is 4*((100vh - 160px)/ 7) + 40px) 40px is the border (top and bottom) of the box.
+    */
+
+    grid-template-rows: 90px, calc(((100vh - 160px) / 7) + 10px) calc(2*((100vh - 160px)/ 7) + 20px) calc(4*((100vh - 160px)/ 7) + 40px);
+
+    /* 
+        The first row element would span 3 columns. So, I only define 3 columns for the boxes.
+
+        I used the same logic to calculate the width of the boxes.
+        The width of the boxes are:
+        1st column is ((100vh - 160px) / 7) + 10px) 10px is the border (left and right) of the box.
+        2nd column is 2*((100vh - 160px)/ 7) + 20px) 20px is the border (left and right) of the box.
+        3rd column is 4*((100vh - 160px)/ 7) + 40px) 40px is the border (left and right) of the box.
+    */
+    grid-template-columns: calc(((100vh - 160px) / 7) + 10px) calc(2*((100vh - 160px)/ 7) + 20px) calc(4*((100vh - 160px)/ 7) + 40px);
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    color: #2b00fb;
+}
+/**********  Top Div  **********/
+#TopDiv1 {
+    background-color: green;
+    width: auto;
+    height: auto;
+    grid-column: 1 /4;
+    grid-row: 1;
+}
+#TopDiv1 p {
+    color: #7affff;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+#TopDiv2 {
+    background-color: red;
+    width: calc((100vh - 160px) / 7);
+    height: calc((100vh - 160px) / 7);
+    border: solid 5px black;
+    
+    margin: 0;
+    padding: 0;
+    grid-row: 2;
+    grid-column: 1/2;
+}
+
+#MidDiv1 {
+    background-color: green;
+    width: calc(2*((100vh - 160px)/ 7));
+    height: calc(2*((100vh - 160px)/ 7));
+    border: solid 10px #febfcb;
+    margin: 0;
+    padding: 0;
+    grid-row: 3;
+    grid-column: 2/3;
+}
+
+#BottomDiv1 {
+    background-color: blue;
+    width: calc(4*((100vh - 160px)/ 7));
+    height: calc(4*((100vh - 160px)/ 7));
+    border: solid 20px #ff00fb;
+    grid-row: 4;
+    grid-column:3/4;
+}
+#BottomDiv1 h1 {
+    color: #008116;
+    margin: 0;
+    padding: 0;
+}
